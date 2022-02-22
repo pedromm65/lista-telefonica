@@ -1,4 +1,4 @@
-const express = require("express");
+import express from "express";
 
 const routes = express.Router();
 
@@ -8,4 +8,4 @@ routes.get("/", (request, response) => {
   })
 });
 
-module.exports = routes;
+export { routes }
