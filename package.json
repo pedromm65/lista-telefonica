@@ -1,0 +1,17 @@
+{
+  "name": "lista-telefonica",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/pedromm65/lista-telefonica.git",
+  "author": "pedromm65 <pedromm65@hotmail.com.br>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon src/server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
