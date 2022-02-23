@@ -11,7 +11,7 @@ interface IContactRequest {
 }
 
 
-class CreateContactService {
+class ContactService {
     async execute({ name, number, email }: IContactRequest) {
       const contactsRepository = getCustomRepository(ContactsRepository)
 
@@ -46,4 +46,4 @@ class CreateContactService {
 
 }
 
-export { CreateContactService }
+export { ContactService }

@@ -1,14 +1,14 @@
 import express from "express";
 import multer from "multer";
-import { CreateContactController } from "./controllers/CreateContactController";
+import { ContactController } from "./controllers/CreateContactController";
 import uploadConfig from "./config/upload";
 const routes = express.Router();
 
 const uploadAvatar = multer(uploadConfig.upload("./tmp/avatar"));
 
-const createContactController = new CreateContactController()
+const createContactController = new ContactController()
 
-routes.post("/contacts", createContactController.handle)
+routes.post("/contacts", createContactController.CreateContact)
 
 
 export { routes }

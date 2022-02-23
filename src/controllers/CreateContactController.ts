@@ -1,13 +1,13 @@
 import { Request, Response } from "express";
-import { CreateContactService } from "../services/CreateContactService";
+import { ContactService } from "../services/ContactService";
 import "express-async-errors"
 
 
-class CreateContactController {
-  async handle(request: Request, response: Response) {
+class ContactController {
+  async CreateContact(request: Request, response: Response) {
     const { number, name, email } = request.body
 
-    const createContactService = new CreateContactService()
+    const createContactService = new ContactService()
 
     const contact = await createContactService.execute({
       number,
@@ -17,8 +17,7 @@ class CreateContactController {
 
     console.log(contact)
     return response.json(contact)
-    
   }
 }
 
-export { CreateContactController }
+export { ContactController }
