@@ -9,6 +9,8 @@ const uploadAvatar = multer(uploadConfig.upload("./tmp/avatar"));
 const createContactController = new ContactController()
 
 routes.post("/contacts", createContactController.CreateContact)
-
+routes.put("/contacts/:id", createContactController.UpdateContact)
+routes.get("/contacts", createContactController.ShowAllContacts)
+routes.delete("/contacts/:id", createContactController.DeleteContact)
 
 export { routes }

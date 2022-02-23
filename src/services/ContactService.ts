@@ -1,8 +1,11 @@
-import { getCustomRepository } from "typeorm"
+import { getConnection, getConnectionManager, getCustomRepository, Timestamp } from "typeorm"
 
 import { ContactsRepository } from "../repositories/ContactsRepository";
 
 import { validatePhone } from "../utils/validatePhoneNumber"
+
+import { IUpdatedContactDTO } from "../dtos/UpdateContactDTO"
+import { Contact } from "../entities/Contact";
 
 interface IContactRequest {
   name: string;
@@ -12,7 +15,7 @@ interface IContactRequest {
 
 
 class ContactService {
-    async execute({ name, number, email }: IContactRequest) {
+    async CreateContact({ name, number, email }: IContactRequest) {
       const contactsRepository = getCustomRepository(ContactsRepository)
 
       const checkIfPhoneNumberIsValid = validatePhone(number)
@@ -42,6 +45,33 @@ class ContactService {
       await contactsRepository.save(contact)
 
       return contact
+    }
+
+    async UpdateContact({ name }, id: string) {
+      await getConnection()
+        .createQueryBuilder()
+        .update(Contact)
+        .set({
+          name: name,
+          updated_at: Date.now()
+        })
+        .where("id = :id", {id: id})
+        .execute()
+    }
+
+    async ShowAllContacts() {
+      const contactsRepository = getCustomRepository(ContactsRepository)
+
+      return await contactsRepository.find()
+    }
+
+    async DeleteContacts(id: string) {
+
+      await getConnection().createQueryBuilder()
+        .delete()
+        .from(Contact)
+        .where("id = :id", { id: id })
+        .execute()
     }
 
 }
