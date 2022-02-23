@@ -1,4 +1,4 @@
-import { getConnection, getConnectionManager, getCustomRepository, Timestamp } from "typeorm"
+import { getConnection, getCustomRepository } from "typeorm"
 
 import { ContactsRepository } from "../repositories/ContactsRepository";
 
@@ -9,7 +9,7 @@ import { Contact } from "../entities/Contact";
 interface IContactRequest {
   name: string;
   number: string;
-  email: string
+  email: string;
 }
 
 
@@ -38,7 +38,7 @@ class ContactService {
       const contact = contactsRepository.create({
         name, 
         number,
-        email
+        email,
       })
 
       await contactsRepository.save(contact)

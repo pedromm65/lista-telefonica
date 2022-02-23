@@ -11,20 +11,20 @@ class ContactController {
     const contact = await contactService.CreateContact({
       number,
       name,
-      email
+      email,
     })
 
-    console.log(contact)
+   
     return response.json(contact)
   }
 
   async UpdateContact(request: Request, response: Response) {
     const { id } = request.params
     const newContact = contactService.UpdateContact(request.body, id)
-    console.log(newContact)
+
     return response.json(newContact)
   }
-
+  
   async ShowAllContacts(request: Request, response: Response) {
     const allContacts = await contactService.ShowAllContacts()
 
@@ -38,6 +38,7 @@ class ContactController {
     return response.send()
 
   }
+
 
 }
 
