@@ -8,10 +8,10 @@ class Contact {
   id: string;
 
   @Column()
-  phoneNumber: string;
+  name: string;
 
   @Column()
-  name: string;
+  number: string;
 
   @Column()
   email: string;

@@ -5,12 +5,12 @@ import "express-async-errors"
 
 class CreateContactController {
   async handle(request: Request, response: Response) {
-    const { phoneNumber, name, email } = request.body
+    const { number, name, email } = request.body
 
     const createContactService = new CreateContactService()
 
     const contact = await createContactService.execute({
-      phoneNumber,
+      number,
       name,
       email
     })

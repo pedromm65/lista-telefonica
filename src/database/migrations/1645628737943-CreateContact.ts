@@ -13,12 +13,14 @@ export class CreateContact1645619454235 implements MigrationInterface {
                         isPrimary: true
                     },
                     {
-                        name: "phoneNumber",
+                        name: "name",
                         type: "varchar"
                     },
                     {
-                        name: "name",
-                        type: "varchar"
+                        name: "number",
+                        type: "varchar",
+                        isNullable: false,
+                        length: "11"
                     },
                     {
                         name: "email",
