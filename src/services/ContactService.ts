@@ -4,7 +4,6 @@ import { ContactsRepository } from "../repositories/ContactsRepository";
 
 import { validatePhone } from "../utils/validatePhoneNumber"
 
-import { IUpdatedContactDTO } from "../dtos/UpdateContactDTO"
 import { Contact } from "../entities/Contact";
 
 interface IContactRequest {
@@ -53,7 +52,6 @@ class ContactService {
         .update(Contact)
         .set({
           name: name,
-          updated_at: Date.now()
         })
         .where("id = :id", {id: id})
         .execute()
